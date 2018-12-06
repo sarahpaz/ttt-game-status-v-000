@@ -17,28 +17,42 @@ WIN_COMBINATIONS = [
 
 def won?(board)
   WIN_COMBINATIONS.detect do |win_combo|
-    board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]] && position_taken?(board, win_combo[0])
-		end
-end
-
-def full?(board)
-  board.all? do |space|
-    space == "X" || space == "O"
+    if board[win_combo[0]] == "X" && board[win_combo[1]] == "X" && board[win_combo[2]] == "X"
+    return win_combo
+    else
+    false
+    end
+    end
   end
-end
 
-def draw?(board)
-  full?(board) && !won?(board)
-end
 
-def over?(board)
-  won?(board) || full?(board) || draw?(board)
-end
 
-def winner(board)
-  if win_combo = won?(board)
-    board[win_combo[0]]
-  else
-    return nil
-  end
-end
+
+#
+# def won?(board)
+#   WIN_COMBINATIONS.detect do |win_combo|
+#     board[win_combo[0]] == board[win_combo[1]] && board[win_combo[1]] == board[win_combo[2]] && position_taken?(board, win_combo[0])
+# 		end
+# end
+#
+# def full?(board)
+#   board.all? do |space|
+#     space == "X" || space == "O"
+#   end
+# end
+#
+# def draw?(board)
+#   full?(board) && !won?(board)
+# end
+#
+# def over?(board)
+#   won?(board) || full?(board) || draw?(board)
+# end
+#
+# def winner(board)
+#   if win_combo = won?(board)
+#     board[win_combo[0]]
+#   else
+#     return nil
+#   end
+# end
